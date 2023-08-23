@@ -1,4 +1,4 @@
-<!TYPE html>
+<!DOCTYPE html>
 <html lang = "en">
 
 <head>
@@ -7,15 +7,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Personal Portfolio Website HTML CSS Only</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
+        :root {
+            --typewriterSpeed: 6s;
+            --typewriterCharacters: 25;
+        }
+
+        body {
+            font-family: 'Inconsolata', monospace;
+            background-color: black;
+            color: white;
+        }
+
         .container {
           display: flex;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        
+        .margin {
+            margin-bottom: 10px;
+        }
+
+        a:link {
+            color: #0BDA51;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #0BDA51;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .button {
+            font-family: 12px 'Inconsolata', monospace;
+            text-decoration: none;
+            background-color:	#0BDA51;
+            color: white;
+            padding: 2px 6px 2px 6px;
+            border-radius: 20px;
+        }
+
+        .button:hover {
+            transform: scale(1.10);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .section-tab {
+            position: relative;
+            font-family: 20px 'Inconsolata', monospace;
+            background-color: #999999;
+            color: white;
+            padding: 4px 10px 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 0.5px solid white;
+            margin-bottom: 20px;
+        }
+
+        .section-tab::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: calc(875px - 100%);
+            margin: 0 auto;
+            height: 1px;
+            background-color: white;
         }
     
         .right-column {
           flex: 3;
           padding: 20px;
           order: 2;
+          display: flex;
+          flex-direction: column;
         }
     
         .left-column {
@@ -23,9 +101,171 @@
           padding: 20px;
           order: -1;
           display: flex;
-          justify-content: center;
+          justify-content: flex-start;
           align-items: center;
+          text-align: center;
           flex-direction: column;
+        }
+
+        .sub-columns-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .left-sub-column,
+        .right-sub-column {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .left-sub-column h1,
+        .right-sub-column h1 {
+            font-size: 5em;
+            color: #0BDA51
+        }
+
+        .left-sub-column h5,
+        .right-sub-column h5 {
+            margin-top: 0;
+            word-wrap: break-word;
+        }
+
+        #main {
+            height: 80px;
+            white-space: nowrap;
+            overflow: hidden;
+            font-family: 16px 'Inconsolata', monospace;
+            position: relative;
+        }
+
+        #border {
+            border-bottom: solid 3px #0BDA51;
+            position: absolute;
+            right: -7px;
+            width: 20px;
+        }
+
+        #main {
+            animation: animated-text var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s normal both;
+        }
+
+        #border {
+            animation: animated-cursor 750ms steps(var(--typewriterCharacters)) infinite;
+        }
+
+        @keyframes animated-text {
+            from {
+                width: 0;
+            }
+            to {
+                width: 480px;
+            }
+        }
+
+        @keyframes animated-cursor {
+            from {
+                border-bottom-color: #0BDA51;
+            }
+            to {
+                border-bottom-color: transparent;
+            }
+        }
+
+        .skill-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .skill-row {
+            display: flex;
+            justify-content: space-between;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .skill-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .circle-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 5px;
+            background-color: #fff;
+        }
+
+        .filled {
+            background-color: #0BDA51;
+        }
+
+        .skill-name {
+            margin-bottom: 10px;
+            text-align: center;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .dot-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .dot {
+            width: 5px;
+            height: 5px;
+            border: 1px solid #333333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dot:last-child {
+            background-color: #0BDA51;
+            border: 2px solid #0BDA51;
+        }
+
+        .line {
+            width: 2px;
+            flex:1;
+            background-color: #333333;
+            position: absolute;
+            z-index: -1;
+            top: 20px;
+        }
+
+        .label {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .description {
+            text-align: center;
+            color: #999999;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -41,131 +281,230 @@
                     margin-right: 10px;
                 }
             </style>
-            <img src="images/Headshot_2.jpeg">
+            <img src="images/Headshot_2.jpeg" class="center">
             <h2>Alexander C. Newhouse</h2>
-            <a href="https://www.union.edu/academic/majors-minors/biomedical-engineering" target="_blank">
-            Union College</a>
-            <p>Biomedical Engineering '19</p>
-            <p>____________________________</p>
-            <a href="https://www.gatech.edu/" target="_blank">Georgia Institute of Technology</a>
-            <p>Mechanical Engineering '24</p>
-            <p>____________________________</p>
-            <p>Chicago, IL</p>
-
+            <h5>____________________________</h5>
+            <b href="https://www.union.edu/academic/majors-minors/biomedical-engineering" class="button">Union College</b>
+            <h3>Biomedical Engineering '19</h3>
+            <h5>____________________________</h5>
+            <b href="https://www.gatech.edu/" class="button">Georgia Institute of Technology</b>
+            <h3>Mechanical Engineering '24</h3>
+            <h5>____________________________</h5>
+            <h3>Chicago, IL</h3>
         </div>
         <div class="right-column">
-            <h3>About Me!
-                <div>
-                    <ul>
-                        <li>I am currently a first year Mechanical Engineering student at the Georgia Institute of
-                            Technology from Union College where I studied Biomedical Engineering and played
-                            four years of Division III Men's Lacrosse. I have skills with CAD software (Solidworks,
-                            Rhinoceros 3D), programming(HTML, Python), medical image analysis (Materialise Mimics,
-                            Materialise 3-matic, Autodesk Meshmixer) and Regulatory Management of Clinical 
-                            Trials(FDA Submissions, FDA Audits, eCRF Management, Budget and Contract
-                            Negotiations).</li>
-                        <li>I am passionate about development of orthopedic implants, advanced image analysis methods,
-                            and rapid design and prototyping of medical devices, and plan to pursue a career in product
-                            development or research and development in the medical device industry.</li>
-                    </ul>
+            <div class="container">
+                <div id="main">
+                    <h1>Hello, I am Alex Newhouse.
+                        <div id="border"></div>
+                    </h1>
+                </div>
+            </div>
+            <div class="sub-columns-container">
+                <div class="left-sub-column">
+                    <h1>4+</h1>
+                    <h5>years of experience</h5>
+                    <h5>between engineering</h5>
+                    <h5>and clinical trials</h5>
+                </div>
+                <div class="right-sub-column">
+                    <h1>22</h1>
+                    <h5>publications in</h5>
+                    <h5>in academic journals</h5>
+                </div>
+            </div>
+            <h3>
+                <div class="section-tab">Skills</div>
+                <div class="skill-container">
+                    <div class="skill-row">
+                        <div class="skill-card">
+                        <span class="skill-name">Statistics</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-name">Rhinoceros 3D/Solidworks</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-name">Medical Image Analysis</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-name">Machine Learning</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="skill-row">
+                    <div class="skill-card">
+                    <span class="skill-name">HTML/CSS</span>
+                        <div class="circle-container">
+                            <div class="circle filled"></div>
+                            <div class="circle filled"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-name">Python</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-name">3D Printing</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-name">Data Management and Visualization</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                    </div>
+
+                </div>
+
+                <div class="skill-row">
+                    <div class="skill-card">
+                    <span class="skill-name">Prototyping</span>
+                        <div class="circle-container">
+                            <div class="circle filled"></div>
+                            <div class="circle filled"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-name">Risk Management</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-name">Regulatory Documentation</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                            </div>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-name">Clinical Research</span>
+                            <div class="circle-container">
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle filled"></div>
+                                <div class="circle"></div>
+                            </div>
+                    </div>
+
                 </div>
             </h3>
 
-            <h3>Experience
-                <div>
-                    <ul>
-                        <li>Research Engineer, Hip Preservation Center, Rush University Medical Center, 
-                            <a href="https://www.rushu.rush.edu/research/departmental-research/orthopedic-surgery-research"
-                                target="_blank">Rush Orthopedic Surgrery Research</a>, June 2019 - June 2021
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <ul>
-                        <li>Clinical Research Coordinator III, Pediatric Neuro-Oncology, Ann & Robert H. Lurie
-                            Children's Hospital of Chicago, 
-                            <a href="https://www.luriechildrens.org/en/specialties-conditions/pediatric-brain-tumors/specialists/"
-                            target="_blank:">Lurie Children's Neuro-Oncology</a>, June 2021 - Present
-                        </li>
-                    </ul>
-                </div>
+            <h3>
+                <div class="section-tab">Experience</div>
+                <h3>Research Engineer, Hip Preservation Center, Rush University Medical Center, 
+                    <a href="https://www.rushu.rush.edu/research/departmental-research/orthopedic-surgery-research"
+                        target="_blank">Rush Orthopedic Surgrery Research</a>, June 2019 - June 2021</h3>
+                <h3>Clinical Research Coordinator II, Pediatric Neuro-Oncology, Ann & Robert H. Lurie Children's Hospital of Chicago, 
+                    <a href="https://www.luriechildrens.org/en/specialties-conditions/pediatric-brain-tumors/specialists/"
+                    target="_blank:">Lurie Children's Neuro-Oncology</a>, June 2021 - May 2023</h3>
+                
+                <h3>Clinical Research Coordinator III, Pediatric Neuro-Oncology, Ann & Robert H. Lurie Children's Hospital of Chicago, 
+                    <a href="https://www.luriechildrens.org/en/specialties-conditions/pediatric-brain-tumors/specialists/"
+                    target="_blank:">Lurie Children's Neuro-Oncology</a>, May 2023 - Present</h3>
+            </h3>
+            <h3>
+                <div class="section-tab">Projects</div>
+                    <h3><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jor.25469" target="_blank">Noninvasive Shape Fitting Method Quantifies Cam Morphology in Femoroacetabular Impingement Syndrome: Implications for Diagnosis and Surgical Planning</a></h3>
+                    <h3><a href="pdf/jor.25139.pdf" target="_blank">MRI- and CT-based Metrics for the Quantification of Arthroscopic Bone Resections in Femoroacetabular
+                        Impingement Syndrome.</a></h3>
+                    <h3><a href="pdf/ASMAR.pdf" target="_blank">Three-Dimensional Measures of Bony Resection During Femoral Osteochondroplasty Are
+                        Related to Alpha Angle Measures: A Cadaveric Study. </a></h3>
+                    <h3><a href="pdf/RTW Paper.pdf" target="_blank">Return to Work Following Hip Arthroscopy for Femoroacetabular Impingement Syndrome in Non-Workers
+                        Compensation Patients.</a></h3>
+                    <h3><a href="pdf/OJSM Paper.pdf" target="_blank">Clinically Significant Outcome Improvement After Hip Arthroscopy in Patients with Femoroacetabular
+                        Impingement Syndrome and Severe Femoral Torsion: A Comparative Magnetic Resonance Imaging Evaluation.</a></h3>
+                    <h3><a href="https://www.sciencedirect.com/science/article/abs/pii/S0749806321010446" target="_blank">Assessment of Femoral Torsion on Magnetic Resonance Imaging is More Reliable Using Oblique-Axial
+                        Sequences Compared with Standard Axial Slices in Patients with Femoroacetabular Impingement Syndrome.</a></h3>
+                    <h3><a href="pdf/AJSM Paper.pdf" target="_blank">Association Between Orientation and Magnitude of Femoral Version Does Not Influence Propensity for Clinically Meaningful Improvement After
+                        Hip Arthroscopy for Femoroacetabular Impingement Syndrome: A Computed Tomography Analysis.</a></h3>
             </h3>
 
-            <h3>Projects
-                <div>
-                    <ul>
-                        <li>Noninvasive Shape Fitting Method Quantifies Cam Morphology in Femoroacetabular Impingement
-                            Syndrome: Implications for Diagnosis and Surgical Planning
-                        </li>
-                        <li>MRI- and CT-based Metrics for the Quantification of Arthroscopic Bone Resections in Femoroacetabular
-                            Impingement Syndrome. <a href="pdf/jor.25139.pdf" target="_blank"> {Paper}</a>
-                        </li>
-                        <li>Three-Dimensional Measures of Bony Resection During Femoral Osteochondroplasty Are
-                            Related to Alpha Angle Measures: A Cadaveric Study. <a href="pdf/ASMAR.pdf"
-                            target="_blank">{Paper}</a>
-                        </li>
-                        <li>Return to Work Following Hip Arthroscopy for Femoroacetabular Impingement Syndrome in Non-Workers
-                            Compensation Patients.
-                            <a href="pdf/RTW Paper.pdf" target="_blank">{Paper}</a>
-                        </li>
-                        <li>Clinically Significant Outcome Improvement After Hip Arthroscopy in Patients with Femoroacetabular
-                            Impingement Syndrome and Severe Femoral Torsion: A Comparative Magnetic Resonance Imaging Evaluation.
-                            <a href="pdf/OJSM Paper.pdf" target="_blank">{Paper}</a>
-                        </li>
-                        <li>Assessment of Femoral Torsion on Magnetic Resonance Imaging is More Reliable Using Oblique-Axial
-                            Sequences Compared with Standard Axial Slices in Patients with Femoroacetabular Impingement Syndrome.
-                        </li>
-                        <li>Association Between Orientation and Magnitude of Femoral Version Does Not Influence Propensity for Clinically Meaningful Improvement After
-                        Hip Arthroscopy for Femoroacetabular Impingement Syndrome: A Computed Tomography Analysis.
-                        <a href="pdf/AJSM Paper.pdf" target="_blank">{Paper}</a>
-                        </li>
-                    </ul>
-                </div>
+            <h3>
+                <div class="section-tab">Graduate School Projects</div>
+                    <h3>Simulation of <a href="gifs/Figure 9.gif" target="_blank">Gear Mesh Rotating</a> and Automatic Calculation of Total Angles Rotated and RPMs</h3>
+                    <h3><a href="images/Edge Detector.png" target="_blank">Image Edge Detector</a> Utilizing an Active Contour Derived from a Partial Differential Equation</h3>
             </h3>
 
-            <h3>Graduate School Projects
-                <div>
-                    <ul>
-                        <li>Simulation of <a href="gifs/Figure 9.gif" target="_blank">Gear Mesh Rotating</a> and Automatic Calculation of Total Angles Rotated and RPMs
-                        </li>
-                        <li><a href="images/Edge Detector.png" target="_blank">Image Edge Detector</a> Utilizing an Active Contour Derived from a Partial Differential Equation
-                        </li>
-                    </ul>
-                </div>
-            </h3>
-
-            <h3>Presentations
-                <ul>
-                    <li>1.5T Magnetic Resonance Imaging Generates Accurate 3D Proximal Femoral
+            <h3>
+                <div class="section-tab">Conference Presentations</div>
+                    <h3>1.5T Magnetic Resonance Imaging Generates Accurate 3D Proximal Femoral
                         Models: Surgical Planning Implications for Femoroacetabular Impingement.
-                        (International Society for Hip Arthroscopy Annual Scientific Meeting 2020)
-                    </li>
-                    <li>Defining
+                        (International Society for Hip Arthroscopy Annual Scientific Meeting 2020)</h3>
+                    <h3>Defining
                         Clinically Significant Improvement on Patient-Reported Outcomes Measurement Information
                         System Test for Patients Undergoing Hip Arthroscopy for the Treatment of Femoroacetabular
                         Impingement Syndrome at 1-Year Follow-Up. (American Orthopaedic Society for Sports Medicine
-                        - Specialty Day 2022)
-                    </li>
-                    <li>Predicting Clinically Significant Outcomes in Patients Undergoing Hip Arthroscopy for the Treatment of
+                        - Specialty Day 2022)</h3>
+                    <h3>Predicting Clinically Significant Outcomes in Patients Undergoing Hip Arthroscopy for the Treatment of
                         Femoroacetabular Impingement Syndrome: Five-Year Results in 453 Patients. (American Orthopaedic Society for Sports Medicine
-                        - Specialty Day 2022)
-                    </li>
-                </ul>
+                        - Specialty Day 2022)</h3>
             </h3>
 
-            <h3>Coursera Certifications
-                <ul>
-                    <li>Applied Machine Learning in Python
-                        <a href="pdf/Coursera Applied ML.pdf" target="_blank">{Certificate}</a>
-                    </li>
-                    <li>Introduction to Data Science in Python
-                        <a href="pdf/Coursera Data Science.pdf" target="_blank">{Certificate}</a>
-                    </li>
-                    <li>Python for Everybody Specialization
-                        <a href="pdf/Coursera Python Everybody.pdf" target="_blank">{Certificate}</a>
-                    </li>
-                </ul>
+            <h3>
+                <div class="section-tab">Coursera Certifications</div>
+                    <h3><a href="pdf/Coursera Applied ML.pdf" target="_blank">Applied Machine Learning in Python</a></h3>
+                    <h3><a href="pdf/Coursera Data Science.pdf" target="_blank">Introduction to Data Science in Python</a></h3>
+                    <h3><a href="pdf/Coursera Python Everybody.pdf" target="_blank">Python for Everybody Specialization</a></h3>
             </h3>
         </div>
     </div>
